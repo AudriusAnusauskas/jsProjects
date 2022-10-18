@@ -4,31 +4,39 @@ let merchantsDiscounts = {
   Circle_K: "15%",
   Ruukki: "10%",
 };
+let transactionFeePercent = "1%";
 
-let checkInput = "2022-09-17 Ruukki 500.08";
-
+let checkInput = " 2022-09-17 Omni 1230";
 let check = checkInput.replace(/\s/g, "");
-// Parse date
-let dateFromCheck = Date.parse(check.slice(0, 10));
-let date = new Date(dateFromCheck);
-let dateString = date.toISOString().slice(0, 10);
-console.log("-------", dateString);
+let dateString, discount, merchant;
+
+function dateToString(input) {
+  // Parse date
+
+  dateString = new Date(Date.parse(check.slice(0, 10)))
+    .toISOString()
+    .slice(0, 10);
+  return dateString;
+}
 
 //check if weekend
-let dayOfWeek = date.getDay();
 
-console.log(dayOfWeek);
-let weekendDiscount;
-if (dayOfWeek === 0 || dayOfWeek === 6) {
-  console.log("it is weekend");
-  weekendDiscount = "10%";
-} else {
-  console.log("it is a workday");
-  weekendDiscount = 0;
+function weekendCheck(input) {
+  let dayOfWeek = new Date(Date.parse(check.slice(0, 10))).getDay();
+  console.log(dayOfWeek);
+  let weekendDiscount;
+  if (dayOfWeek === 0 || dayOfWeek === 6) {
+    console.log("it is weekend");
+    weekendDiscount = "10%";
+  } else {
+    console.log("it is a workday");
+    weekendDiscount = "0%";
+  }
+  return weekendDiscount;
 }
 
 //check mercant and discount
-let discount, merchant;
+
 function merchantDiscount(e) {
   Object.getOwnPropertyNames(e).forEach((val) => {
     if (check.includes(val)) {
@@ -42,16 +50,28 @@ function merchantDiscount(e) {
       document.querySelector("div").innerText = `no such merchant`;
     }
   });
+  return discount;
 }
 
-merchantDiscount(merchantsDiscounts);
-console.log("ddddddfffffffff", discount, typeof discount);
+// Calculate fee
 
-// Calculate discount
+function feeCalc(mD, cI) {
+  weekendCheck(dateToString(cI));
+  merchantDiscount(mD);
 
-let merchantDateString = dateString + merchant;
-let amount = check.replace(check.substring(0, merchantDateString.length), "");
-let discountDec = parseFloat(discount) / 100;
-let payment1 = (amount - amount * discountDec).toFixed(2);
+  let merchantDateString = dateString + merchant;
+  let amount = check.replace(check.substring(0, merchantDateString.length), "");
+  let transactionFeePercentDec = parseFloat(transactionFeePercent) / 100;
+  let discountDec = parseFloat(discount) / 100;
+  let mainTransactionFee = (amount * transactionFeePercentDec).toFixed(2);
+  let transactionFee = (
+    mainTransactionFee -
+    mainTransactionFee * discountDec
+  ).toFixed(2);
+  console.log(transactionFee);
 
-console.log(amount, payment1, discount, parseFloat(discount) / 100);
+  let fee = `${dateString} ${merchant} ${transactionFee}`;
+  return fee;
+}
+
+console.log(feeCalc(merchantsDiscounts, checkInput));
