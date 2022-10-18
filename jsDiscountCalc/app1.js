@@ -46,7 +46,7 @@ function merchantDiscount(e) {
       document.querySelector(
         "div"
       ).innerText = `Discount for ${merchant} is ${discount}`;
-    } else if (discount === undefined) {
+    } else if (merchant === undefined) {
       document.querySelector("div").innerText = `no such merchant`;
     }
   });
@@ -69,8 +69,18 @@ function feeCalc(mD, cI) {
     mainTransactionFee * discountDec
   ).toFixed(2);
   console.log(transactionFee);
-
   let fee = `${dateString} ${merchant} ${transactionFee}`;
+
+  if (dateString === undefined) {
+    dateString = "wrong date";
+    console.log(datestring);
+  } else if (transactionFee === NaN) {
+    transactionFee = "";
+    console.log(transactionFee);
+  } else if (merchant === undefined) {
+    merchant = "no such merchant";
+    console.log(merchant);
+  }
   return fee;
 }
 
