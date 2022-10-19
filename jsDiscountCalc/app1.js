@@ -4,6 +4,10 @@ let merchantsDiscounts = {
   Circle_K: "15%",
   Ruukki: "10%",
 };
+
+let telia = [];
+let circlek = [];
+let teliaNum;
 let transactionFeePercent = "1%";
 
 let checkInput = " 2022-09-17 Omni 1230";
@@ -42,7 +46,7 @@ function merchantDiscount(e) {
     if (check.includes(val)) {
       discount = `${e[val]}`;
       merchant = `${val}`;
-      console.log(`Discount for ${val} is ${e[val]}`);
+      console.log(`Discount for ${merchant} is ${discount}`);
       document.querySelector(
         "div"
       ).innerText = `Discount for ${merchant} is ${discount}`;
@@ -50,8 +54,15 @@ function merchantDiscount(e) {
       document.querySelector("div").innerText = `no such merchant`;
     }
   });
-  return discount;
+  return [discount, merchant, teliaNum];
 }
+
+if (merchant == "Telia") {
+  telia.push(checkInput);
+  teliaNum = telia.length;
+}
+console.log(telia);
+console.log(merchantDiscount(merchantsDiscounts));
 
 // Calculate fee
 
