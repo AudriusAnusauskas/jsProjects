@@ -48,6 +48,8 @@ function merchantDiscount(e) {
     if (check.includes(val)) {
       discount = `${e[val]}`;
       merchant = `${val}`;
+      omni.push(check);
+      omniNum = omni.length;
       console.log(`Discount for ${merchant} is ${discount}`);
       document.querySelector(
         "div"
@@ -55,17 +57,17 @@ function merchantDiscount(e) {
     } else if (merchant === undefined) {
       document.querySelector("div").innerText = `no such merchant`;
     }
+    document.querySelector(
+      "div"
+    ).innerText = `omni array length is  ${omniNum}`;
   });
   // console.log(omni);
-  if (merchant == "Omni") {
-    omni.push(checkInput);
-    omniNum = omni.length;
-  }
-  // console.log(omni);
-  return [discount, merchant, omniNum];
+
+  return [discount, merchant, omni, omniNum];
 }
 
 console.log(merchantDiscount(merchantsDiscounts));
+console.log(omni);
 
 // Calculate fee
 
