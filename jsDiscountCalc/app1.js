@@ -5,9 +5,11 @@ let merchantsDiscounts = {
   Ruukki: "10%",
 };
 
-let telia = [];
+let omni = [];
+console.log(omni);
 let circlek = [];
-let teliaNum;
+console.log(circlek);
+let omniNum;
 let transactionFeePercent = "1%";
 
 let checkInput = " 2022-09-17 Omni 1230";
@@ -54,14 +56,15 @@ function merchantDiscount(e) {
       document.querySelector("div").innerText = `no such merchant`;
     }
   });
-  return [discount, merchant, teliaNum];
+  // console.log(omni);
+  if (merchant == "Omni") {
+    omni.push(checkInput);
+    omniNum = omni.length;
+  }
+  // console.log(omni);
+  return [discount, merchant, omniNum];
 }
 
-if (merchant == "Telia") {
-  telia.push(checkInput);
-  teliaNum = telia.length;
-}
-console.log(telia);
 console.log(merchantDiscount(merchantsDiscounts));
 
 // Calculate fee
