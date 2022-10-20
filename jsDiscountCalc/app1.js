@@ -4,10 +4,10 @@ let merchantsDiscounts = {
   Circle_K: ["15%", []],
   Ruukki: ["10%", []],
 };
-console.log(merchantsDiscounts["Omni"][1]);
+
 let transactionFeePercent = "1%";
 
-let checkInput = " 2022-09-17 Omnis 1230";
+let checkInput = " 2022-09-17 Telia 1230";
 let check = checkInput.replace(/\s/g, "");
 let dateString, discount, merchant, transactions, transactionsNum;
 
