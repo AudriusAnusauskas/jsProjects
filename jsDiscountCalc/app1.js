@@ -1,12 +1,12 @@
 let merchantsDiscounts = {
-  Omni: "12%",
-  Telia: "20%",
-  Circle_K: "15%",
-  Ruukki: "10%",
+  Omni: ["12%", ["2022-09-17 Omni 1230", "2021-09-17 Omni 130"]],
+  Telia: ["20%", []],
+  Circle_K: ["15%", []],
+  Ruukki: ["10%", []],
 };
 
-let omni = [];
-console.log(omni);
+// let omni = [];
+
 let circlek = [];
 console.log(circlek);
 let omniNum;
@@ -14,7 +14,7 @@ let transactionFeePercent = "1%";
 
 let checkInput = " 2022-09-17 Omni 1230";
 let check = checkInput.replace(/\s/g, "");
-let dateString, discount, merchant;
+let dateString, discount, merchant, totalprop;
 
 function dateToString(input) {
   // Parse date
@@ -46,28 +46,33 @@ function weekendCheck(input) {
 function merchantDiscount(e) {
   Object.getOwnPropertyNames(e).forEach((val) => {
     if (check.includes(val)) {
-      discount = `${e[val]}`;
+      discount = `${e[val][0]}`;
       merchant = `${val}`;
-      omni.push(check);
-      omniNum = omni.length;
-      console.log(`Discount for ${merchant} is ${discount}`);
+      transactions = `${e[val][1]}`; //why string???
+      totalprop = `${e[val]}`; // why string???
+      // transactions.push(check);
+      transactionsNum = transactions.length;
+      console.log(
+        `Discount for ${merchant} is ${discount} next ${transactions} and ${transactions.length}`
+      );
       document.querySelector(
         "div"
       ).innerText = `Discount for ${merchant} is ${discount}`;
     } else if (merchant === undefined) {
       document.querySelector("div").innerText = `no such merchant`;
     }
-    document.querySelector(
-      "div"
-    ).innerText = `omni array length is  ${omniNum}`;
+    // document.querySelector(
+    //   "div"
+    // ).innerText = `omni array length is  ${omniNum}`;
   });
-  // console.log(omni);
+  console.log(transactions, typeof transactions);
+  console.log(transactions.length);
+  console.log(totalprop, typeof totalprop);
 
-  return [discount, merchant, omni, omniNum];
+  return [discount, merchant, transactions, transactionsNum];
 }
 
 console.log(merchantDiscount(merchantsDiscounts));
-console.log(omni);
 
 // Calculate fee
 
