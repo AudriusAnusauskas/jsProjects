@@ -1,20 +1,15 @@
 let merchantsDiscounts = {
-  Omni: ["12%", ["2022-09-17 Omni 1230", "2021-09-17 Omni 130"]],
+  Omni: ["12%", ["2022-09-17 Omni 1230"]],
   Telia: ["20%", []],
   Circle_K: ["15%", []],
   Ruukki: ["10%", []],
 };
-
-// let omni = [];
-
-let circlek = [];
-console.log(circlek);
-let omniNum;
+console.log(merchantsDiscounts["Omni"][1]);
 let transactionFeePercent = "1%";
 
-let checkInput = " 2022-09-17 Omni 1230";
+let checkInput = " 2022-09-17 Omnis 1230";
 let check = checkInput.replace(/\s/g, "");
-let dateString, discount, merchant, totalprop;
+let dateString, discount, merchant, transactions, transactionsNum;
 
 function dateToString(input) {
   // Parse date
@@ -40,45 +35,38 @@ function weekendCheck(input) {
   }
   return weekendDiscount;
 }
-
+console.log(merchantsDiscounts["Omni"][1]);
 //check mercant and discount
 
 function merchantDiscount(e) {
   Object.getOwnPropertyNames(e).forEach((val) => {
-    if (check.includes(val)) {
-      discount = `${e[val][0]}`;
-      merchant = `${val}`;
-      transactions = `${e[val][1]}`; //why string???
-      totalprop = `${e[val]}`; // why string???
-      // transactions.push(check);
+    if (checkInput.includes(val)) {
+      merchant = val;
+      discount = e[val][0];
+      transactions = e[val][1];
+      transactions.push(checkInput);
       transactionsNum = transactions.length;
-      console.log(
-        `Discount for ${merchant} is ${discount} next ${transactions} and ${transactions.length}`
-      );
       document.querySelector(
         "div"
-      ).innerText = `Discount for ${merchant} is ${discount}`;
+      ).innerText = `Discount for ${merchant} is ${discount}, made ${transactionsNum} transactions`;
+      console.log(transactions, transactionsNum);
     } else if (merchant === undefined) {
       document.querySelector("div").innerText = `no such merchant`;
     }
-    // document.querySelector(
-    //   "div"
-    // ).innerText = `omni array length is  ${omniNum}`;
   });
-  console.log(transactions, typeof transactions);
-  console.log(transactions.length);
-  console.log(totalprop, typeof totalprop);
-
   return [discount, merchant, transactions, transactionsNum];
 }
-
 console.log(merchantDiscount(merchantsDiscounts));
-
+console.log(transactions, transactionsNum);
+console.log(
+  merchantsDiscounts["Omni"][1],
+  merchantsDiscounts["Omni"][1].length
+);
 // Calculate fee
 
 function feeCalc(mD, cI) {
   weekendCheck(dateToString(cI));
-  merchantDiscount(mD);
+  // merchantDiscount(mD);
 
   let merchantDateString = dateString + merchant;
   let amount = check.replace(check.substring(0, merchantDateString.length), "");
@@ -105,4 +93,4 @@ function feeCalc(mD, cI) {
   return fee;
 }
 
-console.log(feeCalc(merchantsDiscounts, checkInput));
+console.log(feeCalc(merchantsDiscounts, checkInput), transactionsNum);
