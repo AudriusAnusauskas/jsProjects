@@ -1,17 +1,24 @@
+let checkInput = "";
+
+function klik() {
+  checkInput = input.value;
+  console.log(checkInput);
+  return checkInput;
+}
+
+let input = document.getElementById("transaction");
+document.getElementById("button").addEventListener("click", klik);
+console.log(input.value);
+
+// function submitMe(id) {
+//   checkInput = document.getElementById(id).value;
+// }
+
 let merchantsDiscounts = {
-  Omni: ["12%", []],
+  Omni: ["12%", ["2022-09-17 Omni 1230"]],
   Telia: ["20%", []],
   Circle_K: ["15%", []],
   Ruukki: ["10%", []],
 };
 
-console.log(merchantsDiscounts);
-console.log(merchantsDiscounts["Omni"][1]);
-
-let a = 1;
-
-merchantsDiscounts["Omni"][1].push(a);
-merchantsDiscounts["Omni"][1].push("a");
-
-console.log(merchantsDiscounts["Omni"][1]);
-console.log(merchantsDiscounts["Omni"][1].length);
+let transactionFeePercent = "1%";

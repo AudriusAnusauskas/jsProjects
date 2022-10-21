@@ -1,3 +1,8 @@
+var input = document.getElementById("transaction");
+document.getElementById("button").addEventListener("click", () => {
+  input.submit();
+});
+
 let merchantsDiscounts = {
   Omni: ["12%", ["2022-09-17 Omni 1230"]],
   Telia: ["20%", []],
@@ -7,7 +12,7 @@ let merchantsDiscounts = {
 
 let transactionFeePercent = "1%";
 
-let checkInput = " 2022-09-17 Telia 1230";
+let checkInput = input.value;
 let check = checkInput.replace(/\s/g, "");
 let dateString, discount, merchant, transactions, transactionsNum;
 
