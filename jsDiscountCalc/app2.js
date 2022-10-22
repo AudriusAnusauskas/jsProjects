@@ -1,12 +1,12 @@
 let checkInput;
 
-function klik() {
-  checkInputf = input.value;
-  console.log(checkInputf);
-  checkInput = checkInputf;
-  return checkInputf;
-}
-document.getElementById("button").addEventListener("click", klik);
+// function klik() {
+//   checkInputf = input.value;
+//   console.log(checkInputf);
+//   checkInput = checkInputf;
+//   return checkInputf;
+// }
+// document.getElementById("button").addEventListener("click", klik);
 let input = document.getElementById("transaction");
 
 console.log(checkInput, typeof checkInput);
@@ -25,9 +25,9 @@ let merchantsDiscounts = {
 
 let transactionFeePercent = "1%";
 
-function random(number) {
-  const result = Math.floor(Math.random() * number);
-  return result;
+function klik() {
+  checkInputf = input.value;
+  console.log(checkInputf);
+  checkInput = checkInputf;
+  return checkInputf;
 }
-
-console.log(random(4));
