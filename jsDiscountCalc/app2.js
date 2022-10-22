@@ -1,19 +1,21 @@
-let checkInput = "";
+let checkInput;
 
 function klik() {
-  checkInput = input.value;
-  console.log(checkInput);
-  return checkInput;
+  checkInputf = input.value;
+  console.log(checkInputf);
+  checkInput = checkInputf;
+  return checkInputf;
 }
-
-let input = document.getElementById("transaction");
 document.getElementById("button").addEventListener("click", klik);
-console.log(input.value);
+let input = document.getElementById("transaction");
 
+console.log(checkInput, typeof checkInput);
+
+// console.log(input.value);
+// checkInput = checkInputf;
 // function submitMe(id) {
 //   checkInput = document.getElementById(id).value;
 // }
-
 let merchantsDiscounts = {
   Omni: ["12%", ["2022-09-17 Omni 1230"]],
   Telia: ["20%", []],
@@ -22,3 +24,10 @@ let merchantsDiscounts = {
 };
 
 let transactionFeePercent = "1%";
+
+function random(number) {
+  const result = Math.floor(Math.random() * number);
+  return result;
+}
+
+console.log(random(4));
