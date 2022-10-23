@@ -1,21 +1,6 @@
-let checkInput;
+let checkInput = [];
+let checkInputf;
 
-// function klik() {
-//   checkInputf = input.value;
-//   console.log(checkInputf);
-//   checkInput = checkInputf;
-//   return checkInputf;
-// }
-// document.getElementById("button").addEventListener("click", klik);
-let input = document.getElementById("transaction");
-
-console.log(checkInput, typeof checkInput);
-
-// console.log(input.value);
-// checkInput = checkInputf;
-// function submitMe(id) {
-//   checkInput = document.getElementById(id).value;
-// }
 let merchantsDiscounts = {
   Omni: ["12%", ["2022-09-17 Omni 1230"]],
   Telia: ["20%", []],
@@ -26,8 +11,15 @@ let merchantsDiscounts = {
 let transactionFeePercent = "1%";
 
 function klik() {
-  checkInputf = input.value;
-  console.log(checkInputf);
-  checkInput = checkInputf;
-  return checkInputf;
+  checkInputf = document.getElementById("transaction").value;
+  // checkInputf.submit(); // Submit
+  // checkInputf.reset(); // Reset
+  return false; // Prevent page refresh
 }
+
+function passVal() {
+  klik();
+  checkInput.push(checkInputf);
+}
+
+console.log(checkInput, checkInput[0]);
