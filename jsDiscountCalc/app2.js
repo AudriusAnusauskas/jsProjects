@@ -1,6 +1,3 @@
-let checkInput = [];
-let checkInputf;
-
 let merchantsDiscounts = {
   Omni: ["12%", ["2022-09-17 Omni 1230"]],
   Telia: ["20%", []],
@@ -9,17 +6,15 @@ let merchantsDiscounts = {
 };
 
 let transactionFeePercent = "1%";
-
+let checkInputf;
 function klik() {
   checkInputf = document.getElementById("transaction").value;
-  // checkInputf.submit(); // Submit
-  // checkInputf.reset(); // Reset
-  return false; // Prevent page refresh
+  // checkInputf = "hello";
 }
 
-function passVal() {
-  klik();
-  checkInput.push(checkInputf);
-}
-
-console.log(checkInput, checkInput[0]);
+// function passVal() {
+//   klik();
+//   checkInput.push(checkInputf);
+// }
+klik();
+console.log(checkInputf);
