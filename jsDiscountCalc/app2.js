@@ -8,10 +8,40 @@ let merchantsDiscounts = {
 
 let transactionFeePercent = "1%";
 
-let checkInput = "";
-var input = document.getElementById("transaction");
-document.getElementById("button").addEventListener("click", () => {
-  checkInput = input.value;
+let dateStringInput = document.getElementById("date");
+date.addEventListener("input", function () {
+  let date = new Date(dateStringInput.value).toISOString().slice(0, 10);
+  console.log(date);
+  return date;
+});
+
+let merchantInput = document.getElementById("merchants");
+merchants.addEventListener("change", function () {
+  let merchants = merchantInput.value;
+  console.log(merchants);
+  return merchants;
+});
+
+let amountInput = document.getElementById("amount");
+amount.addEventListener("change", function () {
+  let amount = amountInput.value;
+  console.log(amount);
+  return amount;
+});
+
+let inputTotal = document.getElementById("transaction");
+let transactionButton = document.getElementById("transactionButton");
+transactionButton.addEventListener("click", function () {
+  inputTotal.value = `${date.value} ${merchants.value} ${amount.value}`;
+  button.disabled = false;
+});
+
+let button = document.getElementById("button");
+button.disabled = true;
+
+button.addEventListener("click", () => {
+  checkInput = inputTotal.value;
+  button.disabled = true;
   console.log(checkInput);
 
   document.getElementById("transaction").value = "";
