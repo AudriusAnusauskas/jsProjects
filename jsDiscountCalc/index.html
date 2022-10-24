@@ -4,43 +4,53 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Discount Calculator</title>
   </head>
   <body>
-    <div id="div1"></div>
-    <form action="submit">
-      <label for="date">Pick a date</label>
-      <input type="date" name="date" id="date" />
+    <!-- <div class="container"> -->
+    <div class="info"><p id="div1"></p></div>
+    <form action="">
+      <label for="date" class="item item-label"
+        >Pick a date <input type="date" name="date" id="date" class="item"
+      /></label>
 
-      <label for="merchant"> Pick a Merchant</label>
-      <select name="merchants" id="merchants">
-        <option value=""></option>
-        <option value="Omni">Omni</option>
-        <option value="Telia">Telia</option>
-        <option value="Circle_K">Circle_K</option>
-        <option value="Ruukki">Ruukki</option>
-        <option value="7-ELEVEN">7-ELEVEN</option>
-      </select>
-      <label for="amount">Enter amount</label>
-      <button type="button" id="transactionButton">Add transaction</button>
+      <label for="merchant" class="item item-label">
+        Pick a Merchant
+        <select name="merchants" id="merchants" class="item">
+          <option value=""></option>
+          <option value="Omni">Omni</option>
+          <option value="Telia">Telia</option>
+          <option value="Circle_K">Circle_K</option>
+          <option value="Ruukki">Ruukki</option>
+          <option value="7-ELEVEN">7-ELEVEN</option>
+        </select></label
+      >
+      <label for="amount" class="item item-label"
+        >Enter amount
+        <input type="number" name="amount" id="amount" class="item"
+      /></label>
+      <button type="button" id="transactionButton" class="item">
+        Add transaction
+      </button>
+    </form>
+    <form class="transaction">
+      <input
+        type="text"
+        name="transaction"
+        id="transaction"
+        class="input"
+        placeholder="transaction input"
+        required
+      />
+      <button type="button" id="button" class="button">Submit</button>
     </form>
 
-    <input type="number" name="amount" id="amount" />
-    <input
-      type="text"
-      name="transaction"
-      id="transaction"
-      class="input"
-      placeholder="transaction input"
-      required
-    />
-    <button type="submit" id="button" class="button">Submit</button>
-
-    <div id="div2"></div>
-
+    <div class="info"><p id="div2"></p></div>
+    <!-- </div> -->
     <!-- <script src="app.js"></script> -->
     <!-- <script src="app1.js"></script> -->
-    <script src="app03.js"></script>
+    <!-- <script src="app03.js"></script> -->
     <script src="app2.js"></script>
   </body>
 </html>

@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page sections */
+
+body {
+  border-top: 5px solid #1098ad;
+  color: #444;
+  font-family: sans-serif;
+  position: relative;
+  width: 600px;
+  height: 500px;
+  margin: 30px auto;
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 20px 30px 0 rgb(0, 0, 0, 0.07);
+  font-size: 12px;
+}
+/* .container {
+  
+
+} */
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+  padding: 20px;
+  background-color: #dee2e6;
+  gap: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+  padding: 20px;
+  background-color: #f1f3f5;
+}
+
+.item {
+  width: 200px;
+}
+select,
+input {
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+.transaction input {
+  width: 200px;
+
+  font-size: 15px;
+}
