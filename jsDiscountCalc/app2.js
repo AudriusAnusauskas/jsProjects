@@ -14,7 +14,9 @@ document.getElementById("button").addEventListener("click", () => {
   checkInput = input.value;
   console.log(checkInput);
 
+  document.getElementById("transaction").value = "";
   let check = checkInput.replace(/\s/g, "");
+
   let dateString, discount, merchant, transactions, transactionsNum;
 
   function dateToString(input) {
@@ -23,6 +25,8 @@ document.getElementById("button").addEventListener("click", () => {
     dateString = new Date(Date.parse(check.slice(0, 10)))
       .toISOString()
       .slice(0, 10);
+
+    console.log(dateString);
     return dateString;
   }
 
@@ -59,7 +63,8 @@ document.getElementById("button").addEventListener("click", () => {
         ${merchant} made ${transactionsNum} transactions`;
         console.log(transactions, transactionsNum);
       } else if (merchant === undefined) {
-        document.querySelector("div").innerText = `no such merchant`;
+        document.querySelector("#div1").innerText = `no such merchant`;
+        document.querySelector("#div2").innerText = ` `;
       }
     });
     return [discount, merchant, transactions, transactionsNum];
@@ -79,6 +84,7 @@ document.getElementById("button").addEventListener("click", () => {
       check.substring(0, merchantDateString.length),
       ""
     );
+    Number(amount);
     let transactionFeePercentDec = parseFloat(transactionFeePercent) / 100;
     let discountDec = parseFloat(discount) / 100;
     let mainTransactionFee = (amount * transactionFeePercentDec).toFixed(2);
@@ -86,23 +92,19 @@ document.getElementById("button").addEventListener("click", () => {
       mainTransactionFee -
       mainTransactionFee * discountDec
     ).toFixed(2);
-    console.log(transactionFee);
-    let fee = `${dateString} ${merchant} ${transactionFee}`;
-
-    document.querySelector(
-      "#div2"
-    ).innerText = `The fee for ${merchant} is ${fee}`;
+    console.log(typeof transactionFee);
 
     if (dateString === undefined) {
       dateString = "wrong date";
       console.log(datestring);
-    } else if (transactionFee === NaN) {
-      transactionFee = "";
-      console.log(transactionFee);
     } else if (merchant === undefined) {
-      merchant = "no such merchant";
+      merchant = "wrong merchant";
       console.log(merchant);
     }
+    let fee = `${dateString} ${merchant} ${transactionFee}`;
+    document.querySelector(
+      "#div2"
+    ).innerText = `The fee for ${merchant} is ${fee}`;
     return fee;
   }
 
