@@ -88,13 +88,13 @@ button.addEventListener("click", () => {
         transactions.push(checkInput);
         transactionsNum = transactions.length;
         document.querySelector(
-          "div"
+          "#p1"
         ).innerText = `Discount for ${merchant} is ${discount}, 
         ${merchant} made ${transactionsNum} transactions`;
         console.log(transactions, transactionsNum);
       } else if (merchant === undefined) {
-        document.querySelector("#div1").innerText = `no such merchant`;
-        document.querySelector("#div2").innerText = ` `;
+        document.querySelector("#p1").innerText = `no such merchant`;
+        document.querySelector("#p2").innerText = ` `;
       }
     });
     return [discount, merchant, transactions, transactionsNum];
@@ -131,12 +131,16 @@ button.addEventListener("click", () => {
       merchant = "wrong merchant";
       console.log(merchant);
     }
-    let fee = `${dateString} ${merchant} ${transactionFee}`;
+
+    let fee = `${transactionFee}`;
+    let feeOutput = `${dateString} ${merchant} ${transactionFee}`;
     document.querySelector(
-      "#div2"
+      "#p2"
     ).innerText = `The fee for ${merchant} is ${fee}`;
-    return fee;
+    document.querySelector("#p3").innerText = `The fee output is:`;
+    document.querySelector("#p4").innerText = ` ${feeOutput}`;
+    return [fee, feeOutput];
   }
 
-  console.log(feeCalc(merchantsDiscounts, checkInput), transactionsNum);
+  console.log(feeCalc(merchantsDiscounts, checkInput));
 });

@@ -8,8 +8,10 @@
     <title>Discount Calculator</title>
   </head>
   <body>
-    <!-- <div class="container"> -->
-    <div class="info"><p id="div1"></p></div>
+    <div class="container">
+      <h1>transaction fee calculator</h1>
+    </div>
+    <div class="info"><p id="p1"></p></div>
     <form action="">
       <label for="date" class="item item-label"
         >Pick a date <input type="date" name="date" id="date" class="item"
@@ -30,7 +32,7 @@
         >Enter amount
         <input type="number" name="amount" id="amount" class="item"
       /></label>
-      <button type="button" id="transactionButton" class="item">
+      <button type="button" id="transactionButton" class="btn">
         Add transaction
       </button>
     </form>
@@ -39,14 +41,18 @@
         type="text"
         name="transaction"
         id="transaction"
-        class="input"
+        class="input item"
         placeholder="transaction input"
         required
       />
-      <button type="button" id="button" class="button">Submit</button>
+      <button type="button" id="button" class="btn">Submit</button>
     </form>
 
-    <div class="info"><p id="div2"></p></div>
+    <div class="info">
+      <p id="p2"></p>
+      <p id="p3"></p>
+      <p id="p4"></p>
+    </div>
     <!-- </div> -->
     <!-- <script src="app.js"></script> -->
     <!-- <script src="app1.js"></script> -->
