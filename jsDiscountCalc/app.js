@@ -3,9 +3,10 @@ let merchantsDiscounts = {
   Telia: "20%",
   Circle_K: "15%",
   Ruukki: "10%",
+  "7-ELEVEN": "22%",
 };
 
-let checkInput = "2022-09-17 Ruukki 500.08";
+let checkInput = "2022-09-17 7-ELEVEN 500.08";
 
 console.log(checkInput);
 let check = checkInput.replace(/\s/g, "");
@@ -55,4 +56,4 @@ let amount = check.replace(check.substring(0, merchantDateString.length), "");
 let discountDec = parseFloat(discount) / 100;
 let payment1 = (amount - amount * discountDec).toFixed(2);
 
-console.log(amount, payment1, discount, parseFloat(discount) / 100);
+console.log(amount, payment1, discount, discountDec);
