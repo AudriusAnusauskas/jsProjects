@@ -4,6 +4,7 @@ let merchantsDiscounts = {
   Circle_K: ["15%", []],
   Ruukki: ["10%", []],
   "7-ELEVEN": ["22%", []],
+  Siemens: ["14%", []],
 };
 
 let transactionFeePercent = "1%";
@@ -16,12 +17,18 @@ date.addEventListener("input", function () {
 });
 
 let merchantInput = document.getElementById("merchants");
-merchants.addEventListener("change", function () {
-  let merchants = merchantInput.value;
-  console.log(merchants);
-  return merchants;
-});
+Object.getOwnPropertyNames(merchantsDiscounts).forEach((val) => {
+  let option = document.createElement("option");
+  option.value = `${val}`;
+  option.innerHTML = `${val}`;
+  document.getElementById("merchants").appendChild(option);
 
+  merchants.addEventListener("change", function () {
+    let merchants = merchantInput.value;
+    console.log(merchants);
+    return merchants;
+  });
+});
 let amountInput = document.getElementById("amount");
 amount.addEventListener("change", function () {
   let amount = amountInput.value;
@@ -136,7 +143,7 @@ button.addEventListener("click", () => {
     let feeOutput = `${dateString} ${merchant} ${transactionFee}`;
     document.querySelector(
       "#p2"
-    ).innerText = `The fee for ${merchant} is ${fee}`;
+    ).innerText = `The transaction fee for ${merchant} is ${fee}`;
     document.querySelector("#p3").innerText = `The fee output is:`;
     document.querySelector("#p4").innerText = ` ${feeOutput}`;
     return [fee, feeOutput];
