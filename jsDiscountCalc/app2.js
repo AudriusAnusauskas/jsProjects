@@ -7,8 +7,6 @@ let merchantsDiscounts = {
   Siemens: ["14%", []],
 };
 
-let transactionFeePercent = "1%";
-
 let dateStringInput = document.getElementById("date");
 date.addEventListener("input", function () {
   let date = new Date(dateStringInput.value).toISOString().slice(0, 10);
@@ -115,7 +113,7 @@ button.addEventListener("click", () => {
   );
 
   // Calculate fee
-
+  let transactionFeePercent = "1%";
   function feeCalc(mD, cI) {
     weekendCheck(dateToString(cI));
     let merchantDateString = dateString + merchant;
@@ -142,10 +140,6 @@ button.addEventListener("click", () => {
           transactions10dec) *
       weekendDiscount
     ).toFixed(2);
-    // let transactionFee = (
-    //   mainTransactionFee -
-    //   mainTransactionFee * discountDec * weekendDiscountDec
-    // ).toFixed(2);
     console.log(typeof transactionFee);
 
     if (dateString === undefined) {
