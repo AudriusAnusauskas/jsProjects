@@ -49,7 +49,9 @@ button.disabled = true;
 button.addEventListener("click", () => {
   checkInput = inputTotal.value;
   button.disabled = true;
-  console.log(checkInput);
+  dateStringInput.value = "";
+  merchantInput.value = "";
+  amountInput.value = "";
 
   document.getElementById("transaction").value = "";
   let check = checkInput.replace(/\s/g, "");
@@ -96,7 +98,7 @@ button.addEventListener("click", () => {
         document.querySelector(
           "#p1"
         ).innerText = `Discount for ${merchant} is ${discount}, 
-        ${merchant} made ${transactionsNum} transactions`;
+        ${merchant} has made ${transactionsNum} transactions`;
         console.log(transactions, transactionsNum);
       } else if (merchant === undefined) {
         document.querySelector("#p1").innerText = `no such merchant`;

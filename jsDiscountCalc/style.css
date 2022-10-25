@@ -26,10 +26,10 @@ h1 {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 form {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,6 +39,9 @@ form {
   background-color: #dee2e6;
   gap: 10px;
 }
+.transaction {
+  margin-top: 0;
+}
 
 .info {
   display: flex;
@@ -46,6 +49,7 @@ form {
   width: 550px;
   padding: 20px;
   background-color: #f1f3f5;
+  gap: 5px;
 }
 
 .item {
