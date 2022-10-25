@@ -1,7 +1,7 @@
 let merchantsDiscounts = {
   Omni: ["12%", ["2022-09-17 Omni 1230"]],
-  Telia: ["20%", []],
-  Circle_K: ["15%", []],
+  Telia: ["10%", []],
+  Circle_K: ["20%", []],
   Ruukki: ["10%", []],
   "7-ELEVEN": ["22%", []],
   Siemens: ["14%", []],
@@ -29,6 +29,7 @@ Object.getOwnPropertyNames(merchantsDiscounts).forEach((val) => {
     return merchants;
   });
 });
+
 let amountInput = document.getElementById("amount");
 amount.addEventListener("change", function () {
   let amount = amountInput.value;
@@ -45,7 +46,6 @@ transactionButton.addEventListener("click", function () {
 
 let button = document.getElementById("button");
 button.disabled = true;
-
 button.addEventListener("click", () => {
   checkInput = inputTotal.value;
   button.disabled = true;
@@ -69,20 +69,19 @@ button.addEventListener("click", () => {
 
   //check if weekend
 
+  let weekendDiscount;
   function weekendCheck(input) {
     let dayOfWeek = new Date(Date.parse(check.slice(0, 10))).getDay();
     console.log(dayOfWeek);
-    let weekendDiscount;
     if (dayOfWeek === 0 || dayOfWeek === 6) {
       console.log("it is weekend");
-      weekendDiscount = "10%";
+      weekendDiscount = 0;
     } else {
       console.log("it is a workday");
-      weekendDiscount = "0%";
+      weekendDiscount = 1;
     }
     return weekendDiscount;
   }
-  console.log(merchantsDiscounts["Omni"][1]);
 
   //check mercant and discount
 
@@ -112,6 +111,7 @@ button.addEventListener("click", () => {
     merchantsDiscounts["Omni"][1],
     merchantsDiscounts["Omni"][1].length
   );
+
   // Calculate fee
 
   function feeCalc(mD, cI) {
@@ -122,13 +122,28 @@ button.addEventListener("click", () => {
       ""
     );
     Number(amount);
-    let transactionFeePercentDec = parseFloat(transactionFeePercent) / 100;
-    let discountDec = parseFloat(discount) / 100;
-    let mainTransactionFee = (amount * transactionFeePercentDec).toFixed(2);
-    let transactionFee = (
-      mainTransactionFee -
-      mainTransactionFee * discountDec
+    let transactionFee;
+    let transactionFeePercentDec = parseFloat(transactionFeePercent) / 100; //1%
+    let discountDec = parseFloat(discount) / 100; //personal discount
+
+    let transactions10 = "0%";
+    if (transactionsNum > 10) {
+      transactions10 = "20%";
+    }
+    let transactions10dec = parseFloat(transactions10) / 100;
+    console.log(transactionsNum);
+    transactionFee = (
+      (amount * transactionFeePercentDec -
+        amount * transactionFeePercentDec * discountDec -
+        (amount * transactionFeePercentDec -
+          amount * transactionFeePercentDec * discountDec) *
+          transactions10dec) *
+      weekendDiscount
     ).toFixed(2);
+    // let transactionFee = (
+    //   mainTransactionFee -
+    //   mainTransactionFee * discountDec * weekendDiscountDec
+    // ).toFixed(2);
     console.log(typeof transactionFee);
 
     if (dateString === undefined) {
