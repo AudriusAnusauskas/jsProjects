@@ -1,14 +1,17 @@
 export function getTransaction() {
   // use this function to get values from html input
-  let inputTotal = document.getElementById("transaction");
-  let transactionButton = document.getElementById("transactionButton");
+  let transaction = document.getElementById("transaction");
+  return transaction;
+}
+// console.log(inputTotal);
+
+export function updateFee() {
+  getTransaction();
+  let transactionButton = document.getElementById("button");
   transactionButton.addEventListener("click", function () {
-    inputTotal.value = `${date.value} ${merchants.value} ${amount.value}`;
+    console.log(transaction.value);
     return "2018-09-04 CIRCLE_K 50";
   });
 }
 
-export function updateFee(transaction, fee) {
-  // use this function to get values from html input
-  console.log(fee);
-}
+updateFee();
